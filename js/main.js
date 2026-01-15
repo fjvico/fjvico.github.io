@@ -90,9 +90,9 @@ document.addEventListener('DOMContentLoaded', function() {
         const email = `${user}@${domain}.${tld}`;
         
         element.innerHTML = `
-            <a href="mailto:${email}" class="email-link">
+//            <a href="mailto:${email}" class="email-link">
                 ${email}
-            </a>
+//            </a>
         `;
     });
 });

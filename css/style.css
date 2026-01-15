@@ -414,6 +414,13 @@ footer {
     opacity: 0.7;
 }
 
+/* Paragraph */
+.paragraph-spaced {
+    margin-bottom: 2rem !important;
+    line-height: 1.8;
+}
+
+
 /* Responsive */
 @media (max-width: 768px) {
     .header-text h1 {
@@ -478,3 +485,5 @@ footer {
         height: 200px;
     }
 }
+
+

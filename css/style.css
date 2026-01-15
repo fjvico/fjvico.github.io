@@ -179,15 +179,21 @@ main {
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
-.image-placeholder i {
-    font-size: 5rem;
-    margin-bottom: 1rem;
-    color: var(--accent-color);
-}
-
+/* MANTENER este estilo para el nombre debajo de la imagen */
 .image-placeholder p {
     font-weight: 600;
     font-size: 1.2rem;
+    margin-top: 1rem; /* Añadimos margen superior para separar de la imagen */
+}
+
+/* Estilos para la imagen de perfil REAL */
+.profile-image {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid white;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 /* Producción académica */

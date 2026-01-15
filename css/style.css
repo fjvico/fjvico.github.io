@@ -168,32 +168,81 @@ main {
 .image-placeholder {
     background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 100%);
     border-radius: var(--border-radius);
-    padding: 2rem;
+    padding: 1.5rem;
     text-align: center;
     color: var(--primary-color);
-    height: 100%;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     align-items: center;
     box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.05);
+    /* Quitar height: 100% para que se adapte al contenido */
+}
+
+/* Contenedor específico para la imagen */
+.profile-image-container {
+    width: 180px;
+    height: 180px;
+    overflow: hidden;
+    border-radius: 50%;
+    border: 3px solid white;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 1rem;
+}
+
+/* Estilos para la imagen de perfil REAL */
+.profile-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
 /* MANTENER este estilo para el nombre debajo de la imagen */
 .image-placeholder p {
     font-weight: 600;
     font-size: 1.2rem;
-    margin-top: 1rem; /* Añadimos margen superior para separar de la imagen */
+    margin-top: 0;
+    margin-bottom: 0;
 }
 
-/* Estilos para la imagen de perfil REAL */
-.profile-image {
-    width: 200px;
-    height: 200px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid white;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+/* Estilos para enlaces en texto (reemplazo de botones grandes) */
+.text-link {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    border-bottom: 1px solid transparent;
+}
+
+.text-link:hover {
+    color: var(--accent-color);
+    border-bottom: 1px solid var(--accent-color);
+}
+
+.text-link i {
+    margin-left: 4px;
+    font-size: 0.8em;
+}
+
+/* Enlaces para documentos PDF */
+.pdf-link {
+    color: #d32f2f;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    display: inline-flex;
+    align-items: center;
+}
+
+.pdf-link:hover {
+    color: #b71c1c;
+    text-decoration: underline;
+}
+
+.pdf-link i {
+    margin-right: 6px;
+    font-size: 0.9em;
 }
 
 /* Producción académica */
@@ -239,7 +288,7 @@ main {
     font-size: 0.95rem;
 }
 
-/* Botones */
+/* Botones (para otros usos) */
 .btn {
     display: inline-block;
     background-color: var(--secondary-color);
@@ -407,5 +456,29 @@ footer {
     
     .link-card {
         min-width: 100%;
+    }
+    
+    .profile-image-container {
+        width: 150px;
+        height: 150px;
+    }
+}
+
+@media (max-width: 480px) {
+    .profile-image-container {
+        width: 120px;
+        height: 120px;
+    }
+    
+    .image-placeholder {
+        padding: 1rem;
+    }
+}
+
+/* Para pantallas grandes (opcional) */
+@media (min-width: 1200px) {
+    .profile-image-container {
+        width: 200px;
+        height: 200px;
     }
 }

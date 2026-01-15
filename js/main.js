@@ -89,6 +89,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const tld = element.getAttribute('data-tld');
         const email = `${user}@${domain}.${tld}`;
         
-        el.innerHTML = `<span class="email-display">${email}</span>`;
+        // CORRECCIÓN: Usar "element" en lugar de "el"
+        element.innerHTML = `<span class="email-display">${email}</span>`;
     });
 });

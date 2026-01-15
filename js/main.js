@@ -80,3 +80,19 @@ document.addEventListener('DOMContentLoaded', function() {
         navLinks[0].classList.add('active');
     }
 });
+
+// Script para procesar todos los emails ofuscados
+document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.obfuscated-email').forEach(function(element) {
+        const user = element.getAttribute('data-user');
+        const domain = element.getAttribute('data-domain');
+        const tld = element.getAttribute('data-tld');
+        const email = `${user}@${domain}.${tld}`;
+        
+        element.innerHTML = `
+            <a href="mailto:${email}" class="email-link">
+                ${email}
+            </a>
+        `;
+    });
+});

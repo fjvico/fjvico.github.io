@@ -89,10 +89,6 @@ document.addEventListener('DOMContentLoaded', function() {
         const tld = element.getAttribute('data-tld');
         const email = `${user}@${domain}.${tld}`;
         
-        element.innerHTML = `
-//            <a href="mailto:${email}" class="email-link">
-                ${email}
-//            </a>
-        `;
+        el.innerHTML = `<span class="email-display">${email}</span>`;
     });
 });

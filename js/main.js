@@ -93,3 +93,21 @@ document.addEventListener('DOMContentLoaded', function() {
         element.innerHTML = `<span class="email-display">${email}</span>`;
     });
 });
+
+// En main.js
+document.addEventListener('DOMContentLoaded', function() {
+    // Mostrar/ocultar clave PGP
+    const pgpButton = document.getElementById('show-pgp-key');
+    if (pgpButton) {
+        pgpButton.addEventListener('click', function() {
+            const pgpKey = document.getElementById('pgp-key-full');
+            if (pgpKey.classList.contains('hidden')) {
+                pgpKey.classList.remove('hidden');
+                this.textContent = 'Ocultar clave';
+            } else {
+                pgpKey.classList.add('hidden');
+                this.textContent = 'Mostrar clave completa';
+            }
+        });
+    }
+});

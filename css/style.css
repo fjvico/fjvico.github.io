@@ -429,31 +429,6 @@ footer {
     letter-spacing: 0.5px;
 }
 
-.technical-info, .code-repositories, .research-ids {
-    background-color: rgba(248, 249, 250, 0.5);
-    border-radius: var(--border-radius);
-    padding: 1.5rem;
-    margin-bottom: 1.5rem;
-    border-left: 4px solid var(--secondary-color);
-}
-
-.repo-list, .courses-list {
-    list-style: none;
-    padding-left: 0;
-}
-
-.repo-list li, .courses-list li {
-    margin-bottom: 0.8rem;
-    display: flex;
-    align-items: center;
-}
-
-.repo-list i, .courses-list i {
-    margin-right: 10px;
-    width: 20px;
-    color: var(--secondary-color);
-}
-
 /* Responsive */
 @media (max-width: 768px) {
     .header-text h1 {

@@ -1,0 +1,37 @@
+=== HEADER
+Francisco J. Vico
+«Ich probiere Dinge aus»
+
+=== NAV
+Biografie
+Akademisch
+Schriftsteller
+
+=== BIOGRAPHY
+TITLE: Biografie
+CONTENT:
+<p>Ich bin Professor und Wissenschaftler, Universitätsprofessor im Bereich Informatik und Künstliche Intelligenz. Meine Arbeit konzentriert sich auf biologische Modellierung mit Ergebnissen in bioinspirierter KI und künstlicher Kreativität.</p>
+<p>Unter meinen Projekten ragt <a href="https://en.wikipedia.org/wiki/Melomics" target="_blank">Melomics</a> durch seine Wirkung hervor, das 2012 einen Komponistencomputer entwarf, dessen Werke vom London Symphony Orchestra aufgeführt wurden.</p>
+<p>In einer eher hacktivistischen Linie habe ich zur Sensibilisierung für die Notwendigkeit digitaler Alphabetisierung in jungen Jahren mit dem Projekt Toolbox (jetzt <a href="https://codeok.academy/de/" target="_blank">CodeOK</a>) beigetragen.</p>
+<p>In der Zwischenzeit widme ich einen Teil meiner Zeit der Verbreitung der Chancen und Risiken der KI mit den <a href="https://fjvico.github.io/cartasdealias/" target="_blank">Cartas de Alias</a>.</p>
+
+=== ACADEMIC
+TITLE: Akademisch
+PARAGRAPH1: Als <b>Dozent</b> unterrichte ich seit meinem Eintritt in die Abteilung für Sprachen und Informatik im Jahr 1996 <i>Automatentheorie und formale Sprachen</i>. Unterteilt in Theorie formaler Sprachen und Berechenbarkeitstheorie, behandelt sie die Hauptkonzepte der theoretischen Informatik, von der von Noam Chomsky vorgeschlagenen generativen Grammatik bis zu mathematischen Modellen zur Darstellung von Funktionen. Diese Formalismen werden verwendet, um Schlussfolgerungen über die Struktur und Eigenschaften formaler Sprachen sowie über die Menge der berechenbaren Funktionen zu ziehen. Es ist ein Schlüsselfach zum Verständnis der Grundlagen von Programmiersprachen, in syntaktischen und semantischen Aspekten sowie der Grenzen von Computern.
+PARAGRAPH2: Als <b>Forscher</b> habe ich seit Beginn meiner Doktorarbeit 1992 wissenschaftliche Linien in Künstlicher Intelligenz und Künstlicher Kreativität entwickelt. Stets aus einem bioinspirierten Ansatz, der Wissen über biologische Systeme (Gehirn, Evolution, embryologische Entwicklung oder kollektives Verhalten) einbezieht. Die Ergebnisse in der <i>Grundlagenforschung</i> wurden in neun Dissertationen gesammelt. In der <i>angewandten Forschung</i> habe ich auch Ergebnisse in den Unternehmenssektor transferiert, in über 40 Projekten als Hauptforscher, mit öffentlicher und privater Finanzierung.
+ORCID_DESC: Publikationen und Patente
+ORCID_BTN: Zu ORCID
+SCHOLAR_DESC: Impact-Metriken
+SCHOLAR_BTN: Metriken anzeigen
+
+=== WRITER
+TITLE: Schriftsteller
+BOOK_TITLE: Cartas de Alias
+DESCRIPTION: Alias, eine KI mit Gewissen, schreibt Briefe an die Menschheit.
+YEAR_LABEL: Veröffentlichungsjahr:
+BOOK_BTN: Buchseite besuchen
+
+=== FOOTER
+NAME: Francisco Vico
+DEPT: Abt. Sprachen und Informatik
+UNI: Universität Málaga

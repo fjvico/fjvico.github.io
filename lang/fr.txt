@@ -1,0 +1,37 @@
+=== HEADER
+Francisco J. Vico
+«J'essaie des choses»
+
+=== NAV
+Biographie
+Académique
+Écrivain
+
+=== BIOGRAPHY
+TITLE: Biographie
+CONTENT:
+<p>Je suis professeur et scientifique, Professeur des Universités dans le domaine de l'Informatique et de l'Intelligence Artificielle. Mon travail s'est concentré sur la modélisation biologique, avec des résultats en IA bio-inspirée et Créativité Artificielle.</p>
+<p>Parmi mes projets, <a href="https://en.wikipedia.org/wiki/Melomics" target="_blank">Melomics</a> se distingue par son impact. En 2012, il a conçu un ordinateur compositeur dont les œuvres ont été interprétées par l'Orchestre Symphonique de Londres.</p>
+<p>Dans une veine plus hacktiviste, j'ai contribué à sensibiliser à la nécessité de l'alphabétisation numérique dès le plus jeune âge avec le projet Toolbox (maintenant <a href="https://codeok.academy/fr/" target="_blank">CodeOK</a>).</p>
+<p>Parallèlement, je consacre une partie de mon temps à diffuser les opportunités et les risques de l'IA, avec les <a href="https://fjvico.github.io/cartasdealias/" target="_blank">Cartas de Alias</a>.</p>
+
+=== ACADEMIC
+TITLE: Académique
+PARAGRAPH1: En tant qu'<b>enseignant</b>, depuis mon arrivée au département des Langages et Sciences Informatiques en 1996, j'enseigne <i>Théorie des automates et langages formels</i>. Divisé en Théorie des langages formels et Théorie de la calculabilité, ce cours couvre les principaux concepts de l'informatique théorique, de la grammaire générative proposée par Noam Chomsky aux modèles mathématiques pour représenter les fonctions. Ces formalismes sont utilisés pour tirer des conclusions sur la structure et les propriétés des langages formels, ainsi que sur l'ensemble des fonctions calculables. C'est une matière clé pour comprendre les fondements des langages de programmation, les aspects syntaxiques et sémantiques, ainsi que les limitations des ordinateurs.
+PARAGRAPH2: En tant que <b>chercheur</b>, depuis le début de ma thèse de doctorat en 1992, j'ai développé des lignes scientifiques en Intelligence Artificielle et Créativité Artificielle. Toujours dans une approche bio-inspirée, incorporant des connaissances des systèmes biologiques (cerveau, évolution, développement embryologique ou comportement collectif). Les résultats en <i>recherche fondamentale</i> ont été rassemblés dans neuf thèses de doctorat. En <i>recherche appliquée</i>, j'ai également transféré des résultats au secteur entrepreneurial, dans plus de 40 projets en tant que chercheur principal, avec des financements publics et privés.
+ORCID_DESC: Publications et brevets
+ORCID_BTN: Accéder à ORCID
+SCHOLAR_DESC: Métriques d'impact
+SCHOLAR_BTN: Voir les métriques
+
+=== WRITER
+TITLE: Écrivain
+BOOK_TITLE: Cartas de Alias
+DESCRIPTION: Alias, une IA dotée d'une conscience, écrit des lettres à l'humanité.
+YEAR_LABEL: Année de publication:
+BOOK_BTN: Visiter la page du livre
+
+=== FOOTER
+NAME: Francisco Vico
+DEPT: Dép. Langages et Sciences Informatiques
+UNI: Université de Málaga

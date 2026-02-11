@@ -1,0 +1,37 @@
+=== HEADER
+Francisco J. Vico
+«tento coisas»
+
+=== NAV
+Biografia
+Acadêmico
+Escritor
+
+=== BIOGRAPHY
+TITLE: Biografia
+CONTENT:
+<p>Sou professor e cientista, Professor Catedrático na área de Ciências da Computação e Inteligência Artificial. Meu trabalho tem-se centrado na modelagem biológica, com resultados em IA bioinspirada e Criatividade Artificial.</p>
+<p>Entre os meus projetos, destaca-se pelo impacto o <a href="https://en.wikipedia.org/wiki/Melomics" target="_blank">Melomics</a>, que em 2012 concebeu um computador compositor, cujas obras foram interpretadas pela Orquestra Sinfónica de Londres.</p>
+<p>Numa linha mais hacktivista, contribuí para consciencializar sobre a necessidade de alfabetização digital em idades precoces com o projeto Toolbox (agora <a href="https://codeok.academy/pt/" target="_blank">CodeOK</a>).</p>
+<p>Entretanto, dedico parte do meu tempo a divulgar as oportunidades e os riscos da IA, com as <a href="https://fjvico.github.io/cartasdealias/" target="_blank">Cartas de Alias</a>.</p>
+
+=== ACADEMIC
+TITLE: Acadêmico
+PARAGRAPH1: Como <b>docente</b>, desde a minha incorporação ao departamento de Linguagens e Ciências da Computação em 1996, tenho lecionado <i>Teoria de autómatos e linguagens formais</i>. Dividida em Teoria das linguagens formais e Teoria da Calculabilidade, percorre os principais conceitos da Informática Teórica, desde a gramática generativa proposta por Noam Chomsky, até modelos matemáticos para representar funções. Estes formalismos são utilizados para extrair conclusões sobre a estrutura e propriedades das linguagens formais, assim como do conjunto das funções calculáveis. É uma disciplina chave para entender os fundamentos das linguagens de programação, nos aspetos sintáticos e semânticos, bem como as limitações dos computadores.
+PARAGRAPH2: Como <b>investigador</b>, desde que iniciei a tese de doutoramento em 1992, tenho desenvolvido linhas científicas em Inteligência Artificial e Criatividade Artificial. Sempre com uma abordagem bioinspirada, incorporando conhecimento de sistemas biológicos (cérebro, evolução, desenvolvimento embriológico ou comportamento coletivo). Os resultados em <i>investigação básica</i> foram reunidos em nove teses de doutoramento. Em <i>investigação aplicada</i> também realizei transferência de resultados para o setor empresarial, em mais de 40 projetos como investigador principal, com financiamento público e privado.
+ORCID_DESC: Publicações e patentes
+ORCID_BTN: Aceder ao ORCID
+SCHOLAR_DESC: Métricas de impacto
+SCHOLAR_BTN: Ver métricas
+
+=== WRITER
+TITLE: Escritor
+BOOK_TITLE: Cartas de Alias
+DESCRIPTION: Alias, uma IA com consciência, escreve cartas à humanidade.
+YEAR_LABEL: Ano de publicação:
+BOOK_BTN: Visitar página do livro
+
+=== FOOTER
+NAME: Francisco Vico
+DEPT: Dept. Linguagens e Ciências da Computação
+UNI: Universidade de Málaga

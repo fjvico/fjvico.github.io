@@ -1,0 +1,37 @@
+=== HEADER
+Francisco J. Vico
+«i try things»
+
+=== NAV
+Biography
+Academic
+Writer
+
+=== BIOGRAPHY
+TITLE: Biography
+CONTENT:
+<p>I am a professor and scientist, University Professor in the area of Computer Science and Artificial Intelligence. My work has focused on biological modeling, with results in bio-inspired AI and Artificial Creativity.</p>
+<p>Among my projects, <a href="https://en.wikipedia.org/wiki/Melomics" target="_blank">Melomics</a> stands out for its impact, which in 2012 designed a composer computer whose works were performed by the London Symphony Orchestra.</p>
+<p>In a more hacktivist vein, I have contributed to raising awareness about the need for digital literacy at an early age with the Toolbox project (now <a href="https://codeok.academy/en/" target="_blank">CodeOK</a>).</p>
+<p>Meanwhile, I dedicate part of my time to disseminating the opportunities and risks of AI, with the <a href="https://fjvico.github.io/cartasdealias/" target="_blank">Cartas de Alias</a>.</p>
+
+=== ACADEMIC
+TITLE: Academic
+PARAGRAPH1: As a <b>teacher</b>, since joining the Department of Languages and Computer Science in 1996, I have taught <i>Automata Theory and Formal Languages</i>. Divided into Formal Language Theory and Computability Theory, it covers the main concepts of Theoretical Computer Science, from the generative grammar proposed by Noam Chomsky to mathematical models for representing functions. These formalisms are used to draw conclusions about the structure and properties of formal languages, as well as the set of computable functions. It is a key subject for understanding the foundations of programming languages, in syntactic and semantic aspects, as well as the limitations of computers.
+PARAGRAPH2: As a <b>researcher</b>, since I began my doctoral thesis in 1992, I have developed scientific lines in Artificial Intelligence and Artificial Creativity. Always from a bio-inspired approach, incorporating knowledge from biological systems (brain, evolution, embryological development or collective behavior). The results in <i>basic research</i> have been collected in nine doctoral theses. In <i>applied research</i> I have also transferred results to the business sector, in more than 40 projects as principal investigator, with public and private funding.
+ORCID_DESC: Publications and patents
+ORCID_BTN: Access ORCID
+SCHOLAR_DESC: Impact metrics
+SCHOLAR_BTN: View metrics
+
+=== WRITER
+TITLE: Writer
+BOOK_TITLE: Cartas de Alias
+DESCRIPTION: Alias, an AI with a conscience, writes letters to humanity.
+YEAR_LABEL: Publication year:
+BOOK_BTN: Visit book page
+
+=== FOOTER
+NAME: Francisco Vico
+DEPT: Dept. of Languages and Computer Science
+UNI: University of Málaga

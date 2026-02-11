@@ -361,7 +361,6 @@ a:hover {
 .book-description {
     font-size: 1.1rem;
     margin: 0.5rem 0 0.8rem 0;
-    font-style: italic;
     color: var(--text);
     line-height: 1.7;
 }

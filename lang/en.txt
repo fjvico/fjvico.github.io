@@ -1,5 +1,5 @@
 === HEADER
-Francisco J. Vico
+Francisco Vico
 «I try things»
 
 === NAV

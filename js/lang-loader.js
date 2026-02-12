@@ -63,62 +63,75 @@ const LanguageLoader = {
     
     async loadLanguage(lang) {
         try {
-            // IMPORTANT: Remove cache-busting for GitHub Pages
             const url = `lang/${lang}.txt`;
-            console.log('Loading language file:', url); // For debugging
+            console.log('Loading language file:', url);
             
             const response = await fetch(url);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const content = await response.text();
-            console.log('Language file loaded, length:', content.length); // For debugging
+            console.log('Language file loaded, length:', content.length);
             
             // Parse the entire file and update DOM
             this.parseContent(content);
             
+            // PRESERVE EMAIL - it should never be overwritten by language files
+            this.restoreEmail();
+            
         } catch (error) {
             console.error('Error loading language:', error);
-            // Fallback to embedded content if available
-            this.loadFallbackContent(lang);
+            // Fallback to embedded Spanish content
+            this.loadFallbackContent();
+            // PRESERVE EMAIL even in fallback
+            this.restoreEmail();
+        }
+    },
+    
+    // Restore email after language changes
+    restoreEmail() {
+        const emailDisplay = document.getElementById('email-display');
+        if (emailDisplay) {
+            const user = 'fjvico';
+            const domain = 'uma';
+            const tld = 'es';
+            const email = `${user}@${domain}.${tld}`;
+            emailDisplay.textContent = email;
         }
     },
     
     // Fallback content in case files don't load
-    loadFallbackContent(lang) {
-        console.log('Loading fallback content for:', lang);
+    loadFallbackContent() {
+        console.log('Loading fallback content');
         
-        if (lang === 'es') {
-            // Spanish fallback
-            document.getElementById('header-title').textContent = 'Francisco J. Vico';
-            document.getElementById('header-subtitle').textContent = '«intento cosas»';
-            
-            document.getElementById('nav-bio').innerHTML = '<i class="fas fa-user"></i> Biografía';
-            document.getElementById('nav-academic').innerHTML = '<i class="fas fa-graduation-cap"></i> Académico';
-            document.getElementById('nav-writer').innerHTML = '<i class="fas fa-book"></i> Escritor';
-            
-            document.getElementById('bio-title').textContent = 'Biografía';
-            document.getElementById('bio-content').innerHTML = '<p>Soy profesor y científico, Catedrático de Universidad en el área de Ciencias de la Computación e Inteligencia Artificial. Mi trabajo se ha centrado en el modelado biológico, con resultados en IA bioinspirada y Creatividad Artificial.</p><p>Entre mis proyectos destaca por impacto <a href="https://en.wikipedia.org/wiki/Melomics" target="_blank">Melomics</a>, que en 2012 diseñó un ordenador compositor, cuyas obras fueron interpretadas por la Orquesta Sinfónica de Londres.</p><p>En una línea más hacktivista, he contribuido a tomar conciencia sobre la necesidad de alfabetizar digitalmente en edades tempranas con el proyecto Toolbox (ahora <a href="https://codeok.academy/es/" target="_blank">CodeOK</a>).</p><p>Entretanto, dedico parte de mi tiempo a divulgar sobre las oportunidades y los riesgos de la IA, con las <a href="https://fjvico.github.io/cartasdealias/" target="_blank">Cartas de Alias</a>.</p>';
-            
-            document.getElementById('academic-title').textContent = 'Académico';
-            document.getElementById('academic-content').innerHTML = '<p class="paragraph-spaced">Como <b>docente</b>, desde mi incorporación al departamento de Lenguajes y Ciencias de la Computación en 1996, he impartido <i>Teoría de autómatas y lenguajes formales</i>. Dividida en Teoría de lenguajes formales y Teoría de la Calculabilidad, recorre los principales conceptos de la Infomática Teórica, desde la gramática generativa propuesta por Noam Chomsky, hasta modelos matemáticos para representar funciones. Estos formalismos se utilizan para extraer conclusiones sobre la estructura y propiedades de los lenguajes formales, así como del conjunto de las funciones calculables. Es una asignatura clave para entender los fundamentos de los lenguajes de programación, en aspectos sintácticos y semánticos, así como las limitaciones de los ordenadores.</p><p class="paragraph-spaced">Como <b>investigador</b>, desde que inicié la tesis doctoral en 1992, he desarrollado líneas científicas en Inteligecia Artificial y Creatividad Artificial. Siempre desde un enfoque bioinspirado, incorporando conocimiento de sistemas biológicos (cerebro, evolución, desarrollo embriológico o comportamiento colectivo). Los resultados en <i>investigación básica</i> se han recogido en nueve tesis doctorales. En <i>investigación aplicada</i> también he realizado transferencia de resultados al sector empresarial, en más de 40 proyectos como investigador principal, con financiación pública y privada.</p>';
-            
-            document.getElementById('orcid-desc').textContent = 'Publicaciones y patentes';
-            document.getElementById('orcid-btn').textContent = 'Acceder a ORCID';
-            document.getElementById('scholar-desc').textContent = 'Métricas de impacto';
-            document.getElementById('scholar-btn').textContent = 'Ver métricas';
-            
-            document.getElementById('writer-title').textContent = 'Escritor';
-            document.getElementById('book-title').textContent = 'Cartas de Alias';
-            document.getElementById('book-description').textContent = 'Alias, una IA con cargo de conciencia, escribe cartas a la humanidad.';
-            document.getElementById('year-label').textContent = 'Año de publicación:';
-            document.getElementById('book-btn').textContent = 'Visitar página del libro';
-            
-            document.getElementById('footer-name').textContent = 'Francisco Vico';
-            document.getElementById('footer-dept').textContent = 'Dpto. Lenguajes y Ciencias de la Computación';
-            document.getElementById('footer-uni').textContent = 'Universidad de Málaga';
-        }
-        // Add more fallbacks for other languages if needed
+        // Spanish fallback
+        document.getElementById('header-title').textContent = 'Francisco J. Vico';
+        document.getElementById('header-subtitle').textContent = '«intento cosas»';
+        
+        document.getElementById('nav-bio').innerHTML = '<i class="fas fa-user"></i> Biografía';
+        document.getElementById('nav-academic').innerHTML = '<i class="fas fa-graduation-cap"></i> Académico';
+        document.getElementById('nav-writer').innerHTML = '<i class="fas fa-book"></i> Escritor';
+        
+        document.getElementById('bio-title').textContent = 'Biografía';
+        document.getElementById('bio-content').innerHTML = '<p>Soy profesor y científico, Catedrático de Universidad en el área de Ciencias de la Computación e Inteligencia Artificial. Mi trabajo se ha centrado en el modelado biológico, con resultados en IA bioinspirada y Creatividad Artificial.</p><p>Entre mis proyectos destaca por impacto <a href="https://en.wikipedia.org/wiki/Melomics" target="_blank">Melomics</a>, que en 2012 diseñó un ordenador compositor, cuyas obras fueron interpretadas por la Orquesta Sinfónica de Londres.</p><p>En una línea más hacktivista, he contribuido a tomar conciencia sobre la necesidad de alfabetizar digitalmente en edades tempranas con el proyecto Toolbox (ahora <a href="https://codeok.academy/es/" target="_blank">CodeOK</a>).</p><p>Entretanto, dedico parte de mi tiempo a divulgar sobre las oportunidades y los riesgos de la IA, con las <a href="https://fjvico.github.io/cartasdealias/" target="_blank">Cartas de Alias</a>.</p>';
+        
+        document.getElementById('academic-title').textContent = 'Académico';
+        document.getElementById('academic-content').innerHTML = '<p class="paragraph-spaced">Como <b>docente</b>, desde mi incorporación al departamento de Lenguajes y Ciencias de la Computación en 1996, he impartido <i>Teoría de autómatas y lenguajes formales</i>. Dividida en Teoría de lenguajes formales y Teoría de la Calculabilidad, recorre los principales conceptos de la Infomática Teórica, desde la gramática generativa propuesta por Noam Chomsky, hasta modelos matemáticos para representar funciones. Estos formalismos se utilizan para extraer conclusiones sobre la estructura y propiedades de los lenguajes formales, así como del conjunto de las funciones calculables. Es una asignatura clave para entender los fundamentos de los lenguajes de programación, en aspectos sintácticos y semánticos, así como las limitaciones de los ordenadores.</p><p class="paragraph-spaced">Como <b>investigador</b>, desde que inicié la tesis doctoral en 1992, he desarrollado líneas científicas en Inteligecia Artificial y Creatividad Artificial. Siempre desde un enfoque bioinspirado, incorporando conocimiento de sistemas biológicos (cerebro, evolución, desarrollo embriológico o comportamiento colectivo). Los resultados en <i>investigación básica</i> se han recogido en nueve tesis doctorales. En <i>investigación aplicada</i> también he realizado transferencia de resultados al sector empresarial, en más de 40 proyectos como investigador principal, con financiación pública y privada.</p>';
+        
+        document.getElementById('orcid-desc').textContent = 'Publicaciones y patentes';
+        document.getElementById('orcid-btn').textContent = 'Acceder a ORCID';
+        document.getElementById('scholar-desc').textContent = 'Métricas de impacto';
+        document.getElementById('scholar-btn').textContent = 'Ver métricas';
+        
+        document.getElementById('writer-title').textContent = 'Escritor';
+        document.getElementById('book-title').textContent = 'Cartas de Alias';
+        document.getElementById('book-description').textContent = 'Alias, una IA con cargo de conciencia, escribe cartas a la humanidad.';
+        document.getElementById('year-label').textContent = 'Año de publicación:';
+        document.getElementById('book-btn').textContent = 'Visitar página del libro';
+        
+        document.getElementById('footer-name').textContent = 'Francisco Vico';
+        document.getElementById('footer-dept').textContent = 'Dpto. Lenguajes y Ciencias de la Computación';
+        document.getElementById('footer-uni').textContent = 'Universidad de Málaga';
     },
     
     parseContent(content) {
@@ -127,7 +140,7 @@ const LanguageLoader = {
             return;
         }
         
-        // Get all sections by regex - more robust parsing
+        // Get all sections by regex
         const headerMatch = content.match(/=== HEADER\n([\s\S]*?)(?=\n=== |$)/);
         const navMatch = content.match(/=== NAV\n([\s\S]*?)(?=\n=== |$)/);
         const bioMatch = content.match(/=== BIOGRAPHY\n([\s\S]*?)(?=\n=== |$)/);

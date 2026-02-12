@@ -468,7 +468,7 @@ nav a.active {
     word-break: break-word;
 }
 
-/* ---------- FOOTER - LEFT ALIGNED ---------- */
+/* ---------- FOOTER - LEFT ALIGNED WITH EMAIL VISIBLE ---------- */
 footer {
     margin-top: 30px;
     background: var(--accent);
@@ -537,6 +537,10 @@ footer {
     text-decoration: none;
     border-bottom: 1px solid rgba(255,255,255,0.3);
     word-break: break-word;
+}
+
+.footer-contact a:hover {
+    border-bottom-color: white;
 }
 
 .email-container {

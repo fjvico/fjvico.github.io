@@ -15,8 +15,6 @@
     --accent-light: #e1eceb;
     --border-light: #e2e2e2;
     --shadow-sm: 0 4px 12px rgba(0,0,0,0.03);
-    --radius-md: 16px;
-    --radius-sm: 12px;
 }
 
 body {
@@ -59,7 +57,7 @@ header {
 
 .header-text {
     flex: 1;
-    min-width: 0; /* Prevents overflow */
+    min-width: 0;
 }
 
 .header-text h1 {
@@ -220,7 +218,7 @@ nav a.active {
     box-shadow: var(--shadow-sm);
     border: 1px solid rgba(0,0,0,0.02);
     width: 100%;
-    overflow: hidden; /* CRITICAL for Firefox Android */
+    overflow: hidden;
 }
 
 .section-card h2 {
@@ -242,7 +240,7 @@ nav a.active {
     flex-shrink: 0;
 }
 
-/* ---------- BIOGRAPHY - FIXED FOR FIREFOX ANDROID ---------- */
+/* ---------- BIOGRAPHY ---------- */
 .bio-content {
     display: flex;
     flex-direction: column-reverse;
@@ -317,7 +315,7 @@ nav a.active {
     text-transform: uppercase;
 }
 
-/* ---------- ACADEMIC - FIXED ---------- */
+/* ---------- ACADEMIC ---------- */
 .academic-content-inner {
     width: 100%;
     overflow-wrap: break-word;
@@ -365,7 +363,7 @@ nav a.active {
 
 .link-content {
     flex: 1;
-    min-width: 0; /* Prevents overflow */
+    min-width: 0;
 }
 
 .link-content h3 {
@@ -470,7 +468,7 @@ nav a.active {
     word-break: break-word;
 }
 
-/* ---------- FOOTER - FIXED EMAIL ---------- */
+/* ---------- FOOTER - FIXED WITH RIGHT ALIGNMENT ---------- */
 footer {
     margin-top: 30px;
     background: var(--accent);
@@ -481,9 +479,17 @@ footer {
 
 .footer-content {
     display: flex;
-    flex-direction: column;
-    gap: 24px;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    gap: 30px;
     margin-bottom: 24px;
+}
+
+.footer-info {
+    flex: 1;
+    min-width: 200px;
 }
 
 .footer-info h3 {
@@ -500,10 +506,17 @@ footer {
     word-break: break-word;
 }
 
+.footer-contact {
+    flex: 1;
+    min-width: 200px;
+    text-align: right;
+}
+
 .footer-contact p {
     margin-bottom: 12px;
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: flex-end;
     gap: 10px;
     font-size: 0.8rem;
     flex-wrap: wrap;
@@ -516,6 +529,7 @@ footer {
     opacity: 0.9;
     flex-shrink: 0;
     margin-top: 2px;
+    text-align: center;
 }
 
 .footer-contact a {
@@ -527,7 +541,8 @@ footer {
 
 .email-container {
     display: flex;
-    align-items: flex-start;
+    align-items: center;
+    justify-content: flex-end;
     flex-wrap: wrap;
 }
 
@@ -537,7 +552,6 @@ footer {
     overflow-wrap: break-word;
     font-size: 0.8rem;
     line-height: 1.4;
-    flex: 1;
 }
 
 .footer-copyleft {
@@ -647,6 +661,24 @@ footer {
     .profile-image-container {
         width: 120px;
         height: 120px;
+    }
+    
+    /* Stack footer on mobile */
+    .footer-content {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .footer-contact {
+        text-align: left;
+    }
+    
+    .footer-contact p {
+        justify-content: flex-start;
+    }
+    
+    .email-container {
+        justify-content: flex-start;
     }
 }
 

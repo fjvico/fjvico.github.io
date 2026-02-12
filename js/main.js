@@ -1,9 +1,8 @@
-// JavaScript para funcionalidades básicas de la página
-
+// Smooth scrolling and active nav highlighting
 document.addEventListener('DOMContentLoaded', function() {
-    // Suavizar el desplazamiento a las secciones
     const navLinks = document.querySelectorAll('nav a');
     
+    // Smooth scroll to sections
     navLinks.forEach(link => {
         link.addEventListener('click', function(e) {
             if (this.getAttribute('href').startsWith('#')) {
@@ -13,13 +12,11 @@ document.addEventListener('DOMContentLoaded', function() {
                 const targetElement = document.querySelector(targetId);
                 
                 if (targetElement) {
-                    // Desplazamiento suave
                     window.scrollTo({
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
                     
-                    // Actualizar estado activo en navegación
                     navLinks.forEach(link => link.classList.remove('active'));
                     this.classList.add('active');
                 }
@@ -27,37 +24,34 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Efecto de aparición de elementos al hacer scroll
-    const observerOptions = {
-        root: null,
-        rootMargin: '0px',
-        threshold: 0.1
-    };
-    
+    // Intersection Observer for fade-in animations
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
                 entry.target.classList.add('fade-in');
             }
         });
-    }, observerOptions);
+    }, {
+        threshold: 0.1
+    });
     
-    // Observar las secciones principales
-    const sections = document.querySelectorAll('.section-card');
-    sections.forEach(section => {
+    // Observe all section cards
+    document.querySelectorAll('.section-card').forEach(section => {
         section.classList.add('fade-on-scroll');
         observer.observe(section);
     });
     
-    // Añadir clase activa a la sección actual durante el desplazamiento
+    // Update active nav on scroll
     window.addEventListener('scroll', function() {
         let current = '';
         const sections = document.querySelectorAll('section');
+        const scrollPosition = window.scrollY + 100;
         
         sections.forEach(section => {
             const sectionTop = section.offsetTop;
-            const sectionHeight = section.clientHeight;
-            if (scrollY >= (sectionTop - 100)) {
+            const sectionBottom = sectionTop + section.offsetHeight;
+            
+            if (scrollPosition >= sectionTop && scrollPosition < sectionBottom) {
                 current = section.getAttribute('id');
             }
         });
@@ -70,57 +64,19 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Inicializar con la primera sección activa
+    // Set initial active nav
     if (window.location.hash) {
         const activeLink = document.querySelector(`nav a[href="${window.location.hash}"]`);
-        if (activeLink) {
-            activeLink.classList.add('active');
-        }
+        if (activeLink) activeLink.classList.add('active');
     } else {
-        navLinks[0].classList.add('active');
+        navLinks[0]?.classList.add('active');
     }
 });
 
-// Script para procesar todos los emails ofuscados - FIXED FOR FIREFOX
+// Email display - simplified (no obfuscated-email fallback needed)
 document.addEventListener('DOMContentLoaded', function() {
-    // Construir email desde los atributos data
-    const user = 'fjvico';
-    const domain = 'uma';
-    const tld = 'es';
-    const email = `${user}@${domain}.${tld}`;
-    
-    // Buscar el elemento email-display y actualizarlo
     const emailDisplay = document.getElementById('email-display');
     if (emailDisplay) {
-        emailDisplay.textContent = email;
-    }
-    
-    // También buscar cualquier elemento con clase obfuscated-email como respaldo
-    document.querySelectorAll('.obfuscated-email').forEach(function(element) {
-        const user = element.getAttribute('data-user') || 'fjvico';
-        const domain = element.getAttribute('data-domain') || 'uma';
-        const tld = element.getAttribute('data-tld') || 'es';
-        const email = `${user}@${domain}.${tld}`;
-        
-        // Crear un span con el email
-        element.innerHTML = `<span class="email-display">${email}</span>`;
-    });
-});
-
-// En main.js
-document.addEventListener('DOMContentLoaded', function() {
-    // Mostrar/ocultar clave PGP
-    const pgpButton = document.getElementById('show-pgp-key');
-    if (pgpButton) {
-        pgpButton.addEventListener('click', function() {
-            const pgpKey = document.getElementById('pgp-key-full');
-            if (pgpKey.classList.contains('hidden')) {
-                pgpKey.classList.remove('hidden');
-                this.textContent = 'Ocultar clave';
-            } else {
-                pgpKey.classList.add('hidden');
-                this.textContent = 'Mostrar clave completa';
-            }
-        });
+        emailDisplay.textContent = 'fjvico@uma.es';
     }
 });

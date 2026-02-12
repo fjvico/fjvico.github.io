@@ -17,24 +17,29 @@
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <!-- LANGUAGE SELECTOR -->
-  <div class="language-selector">
-    <div class="container">
-      <button class="lang-btn active" data-lang="es">ES</button>
-      <button class="lang-btn" data-lang="en">EN</button>
-      <button class="lang-btn" data-lang="fr">FR</button>
-      <button class="lang-btn" data-lang="de">DE</button>
-      <button class="lang-btn" data-lang="it">IT</button>
-      <button class="lang-btn" data-lang="pt">PT</button>
-    </div>
-  </div>
-
   <header>
     <div class="container">
       <div class="header-content">
         <div class="header-text">
           <h1 id="header-title">Francisco J. Vico</h1>
           <p id="header-subtitle" class="subtitle">«intento cosas»</p>
+        </div>
+        
+        <!-- LANGUAGE DROPDOWN INTEGRATED IN HEADER -->
+        <div class="language-dropdown">
+          <button class="lang-btn-dropdown" id="langDropdownBtn">
+            <i class="fas fa-globe"></i>
+            <span id="current-lang">ES</span>
+            <i class="fas fa-chevron-down"></i>
+          </button>
+          <div class="dropdown-content" id="dropdownContent">
+            <a href="#" data-lang="es">🇪🇸 ES - Español</a>
+            <a href="#" data-lang="en">🇬🇧 EN - English</a>
+            <a href="#" data-lang="fr">🇫🇷 FR - Français</a>
+            <a href="#" data-lang="de">🇩🇪 DE - Deutsch</a>
+            <a href="#" data-lang="it">🇮🇹 IT - Italiano</a>
+            <a href="#" data-lang="pt">🇵🇹 PT - Português</a>
+          </div>
         </div>
       </div>
     </div>
@@ -56,7 +61,7 @@
       <h2><i class="fas fa-user"></i> <span id="bio-title">Biografía</span></h2>
       <div class="bio-content">
         <div class="bio-text">
-          <div id="bio-content"></div>
+          <div id="bio-content" class="bio-content-inner"></div>
         </div>
         <div class="bio-image">
           <div class="image-placeholder">
@@ -72,7 +77,7 @@
     <!-- ACADÉMICO section -->
     <section id="academico" class="section-card">
       <h2><i class="fas fa-graduation-cap"></i> <span id="academic-title">Académico</span></h2>
-      <div id="academic-content"></div>
+      <div id="academic-content" class="academic-content-inner"></div>
 
       <div class="academic-links">
         <div class="link-card">
@@ -126,11 +131,9 @@
           <p id="footer-uni">Universidad de Málaga</p>
         </div>
         <div class="footer-contact">
-          <p>
+          <p class="email-container">
             <i class="fas fa-envelope"></i> 
-            <span class="obfuscated-email" data-user="fjvico" data-domain="uma" data-tld="es">
-              [email protegido]
-            </span>
+            <span id="email-display" class="email-display"></span>
           </p>
           <p>
             <i class="fas fa-code-branch"></i>
@@ -152,7 +155,9 @@
     </div>
   </footer>
 
-  <!-- Language Loader Script - Single file per language -->
+  <!-- Language Loader Script -->
   <script src="js/lang-loader.js"></script>
+  <!-- Main Script -->
+  <script src="js/main.js"></script>
 </body>
 </html>

@@ -1,26 +1,66 @@
-// Simple language loader - ONE file per language
+// Language loader with dropdown support
 const LanguageLoader = {
     currentLang: 'es',
     
     init() {
-        // Load default language
-        this.loadLanguage('es');
-        
-        // Set up language buttons
-        const buttons = document.querySelectorAll('.lang-btn');
-        buttons.forEach(btn => {
-            btn.addEventListener('click', (e) => {
+        // Set up dropdown items
+        document.querySelectorAll('.dropdown-content a').forEach(item => {
+            item.addEventListener('click', (e) => {
                 e.preventDefault();
-                const lang = btn.getAttribute('data-lang');
+                const lang = item.getAttribute('data-lang');
+                this.switchLanguage(lang);
                 
-                // Update active button
-                buttons.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                // Load language
-                this.loadLanguage(lang);
+                // Close dropdown on mobile
+                const dropdown = document.querySelector('.dropdown-content');
+                dropdown.classList.remove('show');
             });
         });
+        
+        // Toggle dropdown on button click (for mobile)
+        const dropdownBtn = document.getElementById('langDropdownBtn');
+        if (dropdownBtn) {
+            dropdownBtn.addEventListener('click', (e) => {
+                e.preventDefault();
+                e.stopPropagation();
+                const dropdown = document.querySelector('.dropdown-content');
+                dropdown.classList.toggle('show');
+            });
+        }
+        
+        // Close dropdown when clicking outside
+        document.addEventListener('click', (e) => {
+            const dropdown = document.querySelector('.dropdown-content');
+            const button = document.getElementById('langDropdownBtn');
+            
+            if (button && dropdown && !button.contains(e.target) && !dropdown.contains(e.target)) {
+                dropdown.classList.remove('show');
+            }
+        });
+        
+        // Load default language
+        this.loadLanguage(this.currentLang);
+        
+        // Set initial button text
+        const currentLangEl = document.getElementById('current-lang');
+        if (currentLangEl) {
+            currentLangEl.textContent = this.currentLang.toUpperCase();
+        }
+    },
+    
+    async switchLanguage(lang) {
+        this.currentLang = lang;
+        
+        // Update button text
+        const currentLangEl = document.getElementById('current-lang');
+        if (currentLangEl) {
+            currentLangEl.textContent = lang.toUpperCase();
+        }
+        
+        // Load language content
+        await this.loadLanguage(lang);
+        
+        // Update URL hash
+        history.pushState({lang: lang}, '', `#${lang}`);
     },
     
     async loadLanguage(lang) {
@@ -32,7 +72,6 @@ const LanguageLoader = {
             
             // Parse the entire file and update DOM
             this.parseContent(content);
-            this.currentLang = lang;
             
         } catch (error) {
             console.error('Error loading language:', error);
@@ -59,17 +98,23 @@ const LanguageLoader = {
     updateHeader(content) {
         const lines = content.trim().split('\n');
         if (lines.length >= 2) {
-            document.getElementById('header-title').textContent = lines[0].trim();
-            document.getElementById('header-subtitle').textContent = lines[1].trim();
+            const headerTitle = document.getElementById('header-title');
+            const headerSubtitle = document.getElementById('header-subtitle');
+            if (headerTitle) headerTitle.textContent = lines[0].trim();
+            if (headerSubtitle) headerSubtitle.textContent = lines[1].trim();
         }
     },
     
     updateNav(content) {
         const lines = content.trim().split('\n');
         if (lines.length >= 3) {
-            document.getElementById('nav-bio').innerHTML = `<i class="fas fa-user"></i> ${lines[0].trim()}`;
-            document.getElementById('nav-academic').innerHTML = `<i class="fas fa-graduation-cap"></i> ${lines[1].trim()}`;
-            document.getElementById('nav-writer').innerHTML = `<i class="fas fa-book"></i> ${lines[2].trim()}`;
+            const navBio = document.getElementById('nav-bio');
+            const navAcademic = document.getElementById('nav-academic');
+            const navWriter = document.getElementById('nav-writer');
+            
+            if (navBio) navBio.innerHTML = `<i class="fas fa-user"></i> ${lines[0].trim()}`;
+            if (navAcademic) navAcademic.innerHTML = `<i class="fas fa-graduation-cap"></i> ${lines[1].trim()}`;
+            if (navWriter) navWriter.innerHTML = `<i class="fas fa-book"></i> ${lines[2].trim()}`;
         }
     },
     
@@ -77,13 +122,15 @@ const LanguageLoader = {
         // Extract title
         const titleMatch = content.match(/TITLE:(.*)/);
         if (titleMatch) {
-            document.getElementById('bio-title').textContent = titleMatch[1].trim();
+            const bioTitle = document.getElementById('bio-title');
+            if (bioTitle) bioTitle.textContent = titleMatch[1].trim();
         }
         
         // Extract content (everything after CONTENT:)
         const contentMatch = content.match(/CONTENT:([\s\S]*)/);
         if (contentMatch) {
-            document.getElementById('bio-content').innerHTML = contentMatch[1].trim();
+            const bioContent = document.getElementById('bio-content');
+            if (bioContent) bioContent.innerHTML = contentMatch[1].trim();
         }
     },
     
@@ -91,7 +138,8 @@ const LanguageLoader = {
         // Extract title
         const titleMatch = content.match(/TITLE:(.*)/);
         if (titleMatch) {
-            document.getElementById('academic-title').textContent = titleMatch[1].trim();
+            const academicTitle = document.getElementById('academic-title');
+            if (academicTitle) academicTitle.textContent = titleMatch[1].trim();
         }
         
         // Extract paragraphs
@@ -101,19 +149,33 @@ const LanguageLoader = {
         let html = '';
         if (p1Match) html += `<p class="paragraph-spaced">${p1Match[1].trim()}</p>`;
         if (p2Match) html += `<p class="paragraph-spaced">${p2Match[1].trim()}</p>`;
-        document.getElementById('academic-content').innerHTML = html;
+        
+        const academicContent = document.getElementById('academic-content');
+        if (academicContent) academicContent.innerHTML = html;
         
         // Extract ORCID
         const orcidDescMatch = content.match(/ORCID_DESC:(.*)/);
         const orcidBtnMatch = content.match(/ORCID_BTN:(.*)/);
-        if (orcidDescMatch) document.getElementById('orcid-desc').textContent = orcidDescMatch[1].trim();
-        if (orcidBtnMatch) document.getElementById('orcid-btn').textContent = orcidBtnMatch[1].trim();
+        if (orcidDescMatch) {
+            const orcidDesc = document.getElementById('orcid-desc');
+            if (orcidDesc) orcidDesc.textContent = orcidDescMatch[1].trim();
+        }
+        if (orcidBtnMatch) {
+            const orcidBtn = document.getElementById('orcid-btn');
+            if (orcidBtn) orcidBtn.textContent = orcidBtnMatch[1].trim();
+        }
         
         // Extract Scholar
         const scholarDescMatch = content.match(/SCHOLAR_DESC:(.*)/);
         const scholarBtnMatch = content.match(/SCHOLAR_BTN:(.*)/);
-        if (scholarDescMatch) document.getElementById('scholar-desc').textContent = scholarDescMatch[1].trim();
-        if (scholarBtnMatch) document.getElementById('scholar-btn').textContent = scholarBtnMatch[1].trim();
+        if (scholarDescMatch) {
+            const scholarDesc = document.getElementById('scholar-desc');
+            if (scholarDesc) scholarDesc.textContent = scholarDescMatch[1].trim();
+        }
+        if (scholarBtnMatch) {
+            const scholarBtn = document.getElementById('scholar-btn');
+            if (scholarBtn) scholarBtn.textContent = scholarBtnMatch[1].trim();
+        }
     },
     
     updateWriter(content) {
@@ -123,11 +185,26 @@ const LanguageLoader = {
         const yearMatch = content.match(/YEAR_LABEL:(.*)/);
         const btnMatch = content.match(/BOOK_BTN:(.*)/);
         
-        if (titleMatch) document.getElementById('writer-title').textContent = titleMatch[1].trim();
-        if (bookTitleMatch) document.getElementById('book-title').textContent = bookTitleMatch[1].trim();
-        if (descMatch) document.getElementById('book-description').textContent = descMatch[1].trim();
-        if (yearMatch) document.getElementById('year-label').textContent = yearMatch[1].trim();
-        if (btnMatch) document.getElementById('book-btn').textContent = btnMatch[1].trim();
+        if (titleMatch) {
+            const writerTitle = document.getElementById('writer-title');
+            if (writerTitle) writerTitle.textContent = titleMatch[1].trim();
+        }
+        if (bookTitleMatch) {
+            const bookTitle = document.getElementById('book-title');
+            if (bookTitle) bookTitle.textContent = bookTitleMatch[1].trim();
+        }
+        if (descMatch) {
+            const bookDesc = document.getElementById('book-description');
+            if (bookDesc) bookDesc.textContent = descMatch[1].trim();
+        }
+        if (yearMatch) {
+            const yearLabel = document.getElementById('year-label');
+            if (yearLabel) yearLabel.textContent = yearMatch[1].trim();
+        }
+        if (btnMatch) {
+            const bookBtn = document.getElementById('book-btn');
+            if (bookBtn) bookBtn.textContent = btnMatch[1].trim();
+        }
     },
     
     updateFooter(content) {
@@ -135,9 +212,18 @@ const LanguageLoader = {
         const deptMatch = content.match(/DEPT:(.*)/);
         const uniMatch = content.match(/UNI:(.*)/);
         
-        if (nameMatch) document.getElementById('footer-name').textContent = nameMatch[1].trim();
-        if (deptMatch) document.getElementById('footer-dept').textContent = deptMatch[1].trim();
-        if (uniMatch) document.getElementById('footer-uni').textContent = uniMatch[1].trim();
+        if (nameMatch) {
+            const footerName = document.getElementById('footer-name');
+            if (footerName) footerName.textContent = nameMatch[1].trim();
+        }
+        if (deptMatch) {
+            const footerDept = document.getElementById('footer-dept');
+            if (footerDept) footerDept.textContent = deptMatch[1].trim();
+        }
+        if (uniMatch) {
+            const footerUni = document.getElementById('footer-uni');
+            if (footerUni) footerUni.textContent = uniMatch[1].trim();
+        }
     }
 };
 

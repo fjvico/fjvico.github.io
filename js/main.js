@@ -81,15 +81,28 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Script para procesar todos los emails ofuscados
+// Script para procesar todos los emails ofuscados - FIXED FOR FIREFOX
 document.addEventListener('DOMContentLoaded', function() {
+    // Construir email desde los atributos data
+    const user = 'fjvico';
+    const domain = 'uma';
+    const tld = 'es';
+    const email = `${user}@${domain}.${tld}`;
+    
+    // Buscar el elemento email-display y actualizarlo
+    const emailDisplay = document.getElementById('email-display');
+    if (emailDisplay) {
+        emailDisplay.textContent = email;
+    }
+    
+    // También buscar cualquier elemento con clase obfuscated-email como respaldo
     document.querySelectorAll('.obfuscated-email').forEach(function(element) {
-        const user = element.getAttribute('data-user');
-        const domain = element.getAttribute('data-domain');
-        const tld = element.getAttribute('data-tld');
+        const user = element.getAttribute('data-user') || 'fjvico';
+        const domain = element.getAttribute('data-domain') || 'uma';
+        const tld = element.getAttribute('data-tld') || 'es';
         const email = `${user}@${domain}.${tld}`;
         
-        // CORRECCIÓN: Usar "element" en lugar de "el"
+        // Crear un span con el email
         element.innerHTML = `<span class="email-display">${email}</span>`;
     });
 });
@@ -111,4 +124,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 });
-

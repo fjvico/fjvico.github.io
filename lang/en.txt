@@ -10,7 +10,7 @@ Writer
 === BIOGRAPHY
 TITLE: Biography
 CONTENT:
-<p>I am a professor and scientist, University Professor in the area of Computer Science and Artificial Intelligence. My work has focused on biological modeling, with results in bio-inspired AI and Artificial Creativity.</p>
+<p>I am a professor and scientist, full professor in the area of Computer Science and Artificial Intelligence. My work has focused on biological modeling, with results in bio-inspired AI and Artificial Creativity.</p>
 <p>Among my projects, <a href="https://en.wikipedia.org/wiki/Melomics" target="_blank">Melomics</a> stands out for its impact, which in 2012 designed a composer computer whose works were performed by the London Symphony Orchestra.</p>
 <p>In a more hacktivist vein, I have contributed to raising awareness about the need for digital literacy at an early age with the Toolbox project (now <a href="https://codeok.academy/en/" target="_blank">CodeOK</a>).</p>
 <p>Meanwhile, I dedicate part of my time to disseminating the opportunities and risks of AI, with the <a href="https://fjvico.github.io/cartasdealias/" target="_blank">Cartas de Alias</a>.</p>

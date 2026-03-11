@@ -10,7 +10,7 @@ Escritor
 === BIOGRAPHY
 TITLE: Biografía
 CONTENT:
-<p>Soy profesor y científico, Catedrático de Universidad en el área de Ciencias de la Computación e Inteligencia Artificial. Mi trabajo se ha centrado en el modelado biológico, con resultados en IA bioinspirada y Creatividad Artificial.</p>
+<p>Soy profesor y científico, catedrático de universidad en el área de Ciencias de la Computación e Inteligencia Artificial. Mi trabajo se ha centrado en el modelado biológico, con resultados en IA bioinspirada y Creatividad Artificial.</p>
 <p>Entre mis proyectos destaca por impacto <a href="https://en.wikipedia.org/wiki/Melomics" target="_blank">Melomics</a>, que en 2012 diseñó un ordenador compositor, cuyas obras fueron interpretadas por la Orquesta Sinfónica de Londres.</p>
 <p>En una línea más hacktivista, he contribuido a tomar conciencia sobre la necesidad de alfabetizar digitalmente en edades tempranas con el proyecto Toolbox (ahora <a href="https://codeok.academy/es/" target="_blank">CodeOK</a>).</p>
 <p>Entretanto, dedico parte de mi tiempo a divulgar sobre las oportunidades y los riesgos de la IA, con las <a href="https://fjvico.github.io/cartasdealias/" target="_blank">Cartas de Alias</a>.</p>

@@ -78,7 +78,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const emailDisplay = document.getElementById('email-display');
     if (emailDisplay) {
         // Obfuscated email construction
-        const user = 'fjvico';
+        const user = 'vico';
         const domain = 'uma';
         const tld = 'es';
         const email = `${user}@${domain}.${tld}`;

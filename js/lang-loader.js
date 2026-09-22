@@ -1,7 +1,7 @@
 // Language loader with dropdown support
 const LanguageLoader = {
     currentLang: 'es',
-    
+
     init() {
         // Set up dropdown items
         document.querySelectorAll('.dropdown-content a').forEach(item => {
@@ -9,76 +9,81 @@ const LanguageLoader = {
                 e.preventDefault();
                 const lang = item.getAttribute('data-lang');
                 this.switchLanguage(lang);
-                
+
                 // Close dropdown
-                document.querySelector('.dropdown-content')?.classList.remove('show');
+                document.querySelector('.language-dropdown')?.classList.remove('open');
             });
         });
-        
+
         // Toggle dropdown on button click
         const dropdownBtn = document.getElementById('langDropdownBtn');
         if (dropdownBtn) {
             dropdownBtn.addEventListener('click', (e) => {
                 e.preventDefault();
                 e.stopPropagation();
-                document.querySelector('.dropdown-content')?.classList.toggle('show');
+                document.querySelector('.language-dropdown')?.classList.toggle('open');
             });
         }
-        
+
         // Close dropdown when clicking outside
         document.addEventListener('click', (e) => {
-            const dropdown = document.querySelector('.dropdown-content');
+            const dropdown = document.querySelector('.language-dropdown');
             const button = document.getElementById('langDropdownBtn');
-            
-            if (button && dropdown && !button.contains(e.target) && !dropdown.contains(e.target)) {
-                dropdown.classList.remove('show');
+
+            if (button && dropdown && !button.contains(e.target)) {
+                dropdown.classList.remove('open');
             }
         });
-        
+
         // Load default language
         this.loadLanguage(this.currentLang);
-        
+
         // Set initial button text
         const currentLangEl = document.getElementById('current-lang');
         if (currentLangEl) {
             currentLangEl.textContent = this.currentLang.toUpperCase();
         }
     },
-    
+
     async switchLanguage(lang) {
         this.currentLang = lang;
-        
+
         // Update button text
         const currentLangEl = document.getElementById('current-lang');
         if (currentLangEl) {
             currentLangEl.textContent = lang.toUpperCase();
         }
-        
+
         // Load language content
         await this.loadLanguage(lang);
-        
-        // Update URL hash
-        history.pushState({lang: lang}, '', `#${lang}`);
+
+        // Update URL hash (sin pasar objetos a pushState, solo strings)
+        try {
+            history.pushState(null, '', `#${lang}`);
+        } catch (e) {
+            // Si falla, no pasa nada
+            console.warn('pushState failed:', e);
+        }
     },
-    
+
     async loadLanguage(lang) {
         try {
             const url = `lang/${lang}.txt`;
             console.log('Loading language file:', url);
-            
+
             const response = await fetch(url);
             if (!response.ok) {
                 throw new Error(`HTTP error! status: ${response.status}`);
             }
             const content = await response.text();
             console.log('Language file loaded, length:', content.length);
-            
+
             // Parse the entire file and update DOM
             this.parseContent(content);
-            
+
             // PRESERVE EMAIL - it should never be overwritten by language files
             this.restoreEmail();
-            
+
         } catch (error) {
             console.error('Error loading language:', error);
             // Fallback to embedded Spanish content
@@ -87,7 +92,7 @@ const LanguageLoader = {
             this.restoreEmail();
         }
     },
-    
+
     // Restore email after language changes
     restoreEmail() {
         const emailDisplay = document.getElementById('email-display');
@@ -99,63 +104,83 @@ const LanguageLoader = {
             emailDisplay.textContent = email;
         }
     },
-    
+
     // Fallback content in case files don't load
     loadFallbackContent() {
         console.log('Loading fallback content');
-        
-        // Spanish fallback
+
         document.getElementById('header-title').textContent = 'Francisco J. Vico';
         document.getElementById('header-subtitle').textContent = '«intento cosas»';
-        
+
         document.getElementById('nav-bio').innerHTML = '<i class="fas fa-user"></i> Biografía';
         document.getElementById('nav-academic').innerHTML = '<i class="fas fa-graduation-cap"></i> Académico';
         document.getElementById('nav-writer').innerHTML = '<i class="fas fa-book"></i> Escritor';
-        
+        const navGames = document.getElementById('nav-games');
+        if (navGames) navGames.innerHTML = '<i class="fas fa-gamepad"></i> Creador de juegos';
+
         document.getElementById('bio-title').textContent = 'Biografía';
-        document.getElementById('bio-content').innerHTML = '<p>Soy profesor y científico, Catedrático de Universidad en el área de Ciencias de la Computación e Inteligencia Artificial. Mi trabajo se ha centrado en el modelado biológico, con resultados en IA bioinspirada y Creatividad Artificial.</p><p>Entre mis proyectos destaca por impacto <a href="https://en.wikipedia.org/wiki/Melomics" target="_blank">Melomics</a>, que en 2012 diseñó un ordenador compositor, cuyas obras fueron interpretadas por la Orquesta Sinfónica de Londres.</p><p>En una línea más hacktivista, he contribuido a tomar conciencia sobre la necesidad de alfabetizar digitalmente en edades tempranas con el proyecto Toolbox (ahora <a href="https://codeok.academy/es/" target="_blank">CodeOK</a>).</p><p>Entretanto, dedico parte de mi tiempo a divulgar sobre las oportunidades y los riesgos de la IA, con las <a href="https://fjvico.github.io/cartasdealias/" target="_blank">Cartas de Alias</a>.</p>';
-        
+        document.getElementById('bio-content').innerHTML = '<p>Soy profesor y científico, catedrático de universidad en el área de Ciencias de la Computación e Inteligencia Artificial. Mi trabajo se ha centrado en el modelado biológico, con resultados en IA bioinspirada y Creatividad Artificial.</p><p>Entre mis proyectos destaca por impacto <a href="https://en.wikipedia.org/wiki/Melomics" target="_blank">Melomics</a>, que en 2012 diseñó un ordenador compositor, cuyas obras fueron interpretadas por la Orquesta Sinfónica de Londres.</p><p>En una línea más hacktivista, he contribuido a tomar conciencia sobre la necesidad de alfabetizar digitalmente en edades tempranas con el proyecto Toolbox (ahora <a href="https://codeok.academy/es/" target="_blank">CodeOK</a>).</p><p>Entretanto, dedico parte de mi tiempo a divulgar sobre las oportunidades y los riesgos de la IA, con las <a href="https://fjvico.github.io/cartasdealias/" target="_blank">Cartas de Alias</a>.</p>';
+
         document.getElementById('academic-title').textContent = 'Académico';
         document.getElementById('academic-content').innerHTML = '<p class="paragraph-spaced">Como <b>docente</b>, desde mi incorporación al departamento de Lenguajes y Ciencias de la Computación en 1996, he impartido <i>Teoría de autómatas y lenguajes formales</i>. Dividida en Teoría de lenguajes formales y Teoría de la Calculabilidad, recorre los principales conceptos de la Infomática Teórica, desde la gramática generativa propuesta por Noam Chomsky, hasta modelos matemáticos para representar funciones. Estos formalismos se utilizan para extraer conclusiones sobre la estructura y propiedades de los lenguajes formales, así como del conjunto de las funciones calculables. Es una asignatura clave para entender los fundamentos de los lenguajes de programación, en aspectos sintácticos y semánticos, así como las limitaciones de los ordenadores.</p><p class="paragraph-spaced">Como <b>investigador</b>, desde que inicié la tesis doctoral en 1992, he desarrollado líneas científicas en Inteligecia Artificial y Creatividad Artificial. Siempre desde un enfoque bioinspirado, incorporando conocimiento de sistemas biológicos (cerebro, evolución, desarrollo embriológico o comportamiento colectivo). Los resultados en <i>investigación básica</i> se han recogido en nueve tesis doctorales. En <i>investigación aplicada</i> también he realizado transferencia de resultados al sector empresarial, en más de 40 proyectos como investigador principal, con financiación pública y privada.</p>';
-        
+
         document.getElementById('orcid-desc').textContent = 'Publicaciones y patentes';
         document.getElementById('orcid-btn').textContent = 'Acceder a ORCID';
         document.getElementById('scholar-desc').textContent = 'Métricas de impacto';
         document.getElementById('scholar-btn').textContent = 'Ver métricas';
-        
+
         document.getElementById('writer-title').textContent = 'Escritor';
         document.getElementById('book-title').textContent = 'Cartas de Alias';
         document.getElementById('book-description').textContent = 'Alias, una IA con cargo de conciencia, escribe cartas a la humanidad.';
         document.getElementById('year-label').textContent = 'Año de publicación:';
         document.getElementById('book-btn').textContent = 'Visitar página del libro';
-        
+
+        // GAMES fallback
+        const gamesTitle = document.getElementById('games-title');
+        if (gamesTitle) gamesTitle.textContent = 'Creador de juegos';
+        const gameName = document.getElementById('game-name');
+        if (gameName) gameName.textContent = 'Selfo';
+        const gameDesc = document.getElementById('game-description');
+        if (gameDesc) gameDesc.innerHTML = 'Los juegos son una de las formas más puras de crear sistemas complejos: reglas simples que producen comportamientos emergentes, decisiones que se ramifican y belleza que surge de esa interacción. <i>Selfo</i> surgió de plantearme: ¿qué pasa cuando el objetivo no es destruir, sino conectar? Como en otras cosas que intento, aquí no me interesa tanto el juego en sí como descubrir qué genera una dinámica compleja y desafiante.';
+        const playersLabel = document.getElementById('game-players-label');
+        if (playersLabel) playersLabel.textContent = 'Jugadores:';
+        const players = document.getElementById('game-players');
+        if (players) players.textContent = '2 (o contra la máquina)';
+        const gameBtn = document.getElementById('game-btn');
+        if (gameBtn) gameBtn.textContent = 'Jugar en selfo.games';
+
         document.getElementById('footer-name').textContent = 'Francisco Vico';
         document.getElementById('footer-dept').textContent = 'Dpto. Lenguajes y Ciencias de la Computación';
         document.getElementById('footer-uni').textContent = 'Universidad de Málaga';
     },
-    
+
     parseContent(content) {
         if (!content || content.length === 0) {
             console.error('Empty content received');
             return;
         }
-        
+
+        // Normalizar saltos de línea (Windows \r\n -> \n)
+        const normalized = content.replace(/\r\n/g, '\n').replace(/\r/g, '\n');
+
         // Get all sections by regex
-        const headerMatch = content.match(/=== HEADER\n([\s\S]*?)(?=\n=== |$)/);
-        const navMatch = content.match(/=== NAV\n([\s\S]*?)(?=\n=== |$)/);
-        const bioMatch = content.match(/=== BIOGRAPHY\n([\s\S]*?)(?=\n=== |$)/);
-        const academicMatch = content.match(/=== ACADEMIC\n([\s\S]*?)(?=\n=== |$)/);
-        const writerMatch = content.match(/=== WRITER\n([\s\S]*?)(?=\n=== |$)/);
-        const footerMatch = content.match(/=== FOOTER\n([\s\S]*?)(?=\n=== |$)/);
-        
+        const headerMatch = normalized.match(/=== HEADER\n([\s\S]*?)(?=\n=== |$)/);
+        const navMatch = normalized.match(/=== NAV\n([\s\S]*?)(?=\n=== |$)/);
+        const bioMatch = normalized.match(/=== BIOGRAPHY\n([\s\S]*?)(?=\n=== |$)/);
+        const academicMatch = normalized.match(/=== ACADEMIC\n([\s\S]*?)(?=\n=== |$)/);
+        const writerMatch = normalized.match(/=== WRITER\n([\s\S]*?)(?=\n=== |$)/);
+        const gamesMatch = normalized.match(/=== GAMES\n([\s\S]*?)(?=\n=== |$)/);
+        const footerMatch = normalized.match(/=== FOOTER\n([\s\S]*?)(?=\n=== |$)/);
+
         if (headerMatch) this.updateHeader(headerMatch[1]);
         if (navMatch) this.updateNav(navMatch[1]);
         if (bioMatch) this.updateBio(bioMatch[1]);
         if (academicMatch) this.updateAcademic(academicMatch[1]);
         if (writerMatch) this.updateWriter(writerMatch[1]);
+        if (gamesMatch) this.updateGames(gamesMatch[1]);
         if (footerMatch) this.updateFooter(footerMatch[1]);
     },
-    
+
     updateHeader(content) {
         const lines = content.trim().split('\n');
         if (lines.length >= 2) {
@@ -165,56 +190,53 @@ const LanguageLoader = {
             if (headerSubtitle) headerSubtitle.textContent = lines[1].trim();
         }
     },
-    
+
     updateNav(content) {
         const lines = content.trim().split('\n');
         if (lines.length >= 3) {
             const navBio = document.getElementById('nav-bio');
             const navAcademic = document.getElementById('nav-academic');
             const navWriter = document.getElementById('nav-writer');
-            
+            const navGames = document.getElementById('nav-games');
+
             if (navBio) navBio.innerHTML = `<i class="fas fa-user"></i> ${lines[0].trim()}`;
             if (navAcademic) navAcademic.innerHTML = `<i class="fas fa-graduation-cap"></i> ${lines[1].trim()}`;
             if (navWriter) navWriter.innerHTML = `<i class="fas fa-book"></i> ${lines[2].trim()}`;
+            if (navGames && lines[3]) navGames.innerHTML = `<i class="fas fa-gamepad"></i> ${lines[3].trim()}`;
         }
     },
-    
+
     updateBio(content) {
-        // Extract title
         const titleMatch = content.match(/TITLE:(.*)/);
         if (titleMatch) {
             const bioTitle = document.getElementById('bio-title');
             if (bioTitle) bioTitle.textContent = titleMatch[1].trim();
         }
-        
-        // Extract content (everything after CONTENT:)
+
         const contentMatch = content.match(/CONTENT:([\s\S]*)/);
         if (contentMatch) {
             const bioContent = document.getElementById('bio-content');
             if (bioContent) bioContent.innerHTML = contentMatch[1].trim();
         }
     },
-    
+
     updateAcademic(content) {
-        // Extract title
         const titleMatch = content.match(/TITLE:(.*)/);
         if (titleMatch) {
             const academicTitle = document.getElementById('academic-title');
             if (academicTitle) academicTitle.textContent = titleMatch[1].trim();
         }
-        
-        // Extract paragraphs
+
         const p1Match = content.match(/PARAGRAPH1:(.*)/);
         const p2Match = content.match(/PARAGRAPH2:(.*)/);
-        
+
         let html = '';
         if (p1Match) html += `<p class="paragraph-spaced">${p1Match[1].trim()}</p>`;
         if (p2Match) html += `<p class="paragraph-spaced">${p2Match[1].trim()}</p>`;
-        
+
         const academicContent = document.getElementById('academic-content');
         if (academicContent) academicContent.innerHTML = html;
-        
-        // Extract ORCID
+
         const orcidDescMatch = content.match(/ORCID_DESC:(.*)/);
         const orcidBtnMatch = content.match(/ORCID_BTN:(.*)/);
         if (orcidDescMatch) {
@@ -225,8 +247,7 @@ const LanguageLoader = {
             const orcidBtn = document.getElementById('orcid-btn');
             if (orcidBtn) orcidBtn.textContent = orcidBtnMatch[1].trim();
         }
-        
-        // Extract Scholar
+
         const scholarDescMatch = content.match(/SCHOLAR_DESC:(.*)/);
         const scholarBtnMatch = content.match(/SCHOLAR_BTN:(.*)/);
         if (scholarDescMatch) {
@@ -238,14 +259,14 @@ const LanguageLoader = {
             if (scholarBtn) scholarBtn.textContent = scholarBtnMatch[1].trim();
         }
     },
-    
+
     updateWriter(content) {
         const titleMatch = content.match(/TITLE:(.*)/);
         const bookTitleMatch = content.match(/BOOK_TITLE:(.*)/);
         const descMatch = content.match(/DESCRIPTION:(.*)/);
         const yearMatch = content.match(/YEAR_LABEL:(.*)/);
         const btnMatch = content.match(/BOOK_BTN:(.*)/);
-        
+
         if (titleMatch) {
             const writerTitle = document.getElementById('writer-title');
             if (writerTitle) writerTitle.textContent = titleMatch[1].trim();
@@ -267,12 +288,46 @@ const LanguageLoader = {
             if (bookBtn) bookBtn.textContent = btnMatch[1].trim();
         }
     },
-    
+
+    updateGames(content) {
+        const titleMatch = content.match(/TITLE:(.*)/);
+        const nameMatch = content.match(/GAME_NAME:(.*)/);
+        const descMatch = content.match(/GAME_DESCRIPTION:(.*)/);
+        const playersLabelMatch = content.match(/PLAYERS_LABEL:(.*)/);
+        const playersMatch = content.match(/PLAYERS:(.*)/);
+        const btnMatch = content.match(/GAME_BTN:(.*)/);
+
+        if (titleMatch) {
+            const el = document.getElementById('games-title');
+            if (el) el.textContent = titleMatch[1].trim();
+        }
+        if (nameMatch) {
+            const el = document.getElementById('game-name');
+            if (el) el.textContent = nameMatch[1].trim();
+        }
+        if (descMatch) {
+            const el = document.getElementById('game-description');
+            if (el) el.innerHTML = descMatch[1].trim();
+        }
+        if (playersLabelMatch) {
+            const el = document.getElementById('game-players-label');
+            if (el) el.textContent = playersLabelMatch[1].trim();
+        }
+        if (playersMatch) {
+            const el = document.getElementById('game-players');
+            if (el) el.textContent = playersMatch[1].trim();
+        }
+        if (btnMatch) {
+            const el = document.getElementById('game-btn');
+            if (el) el.textContent = btnMatch[1].trim();
+        }
+    },
+
     updateFooter(content) {
         const nameMatch = content.match(/NAME:(.*)/);
         const deptMatch = content.match(/DEPT:(.*)/);
         const uniMatch = content.match(/UNI:(.*)/);
-        
+
         if (nameMatch) {
             const footerName = document.getElementById('footer-name');
             if (footerName) footerName.textContent = nameMatch[1].trim();

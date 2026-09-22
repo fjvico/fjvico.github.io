@@ -48,6 +48,9 @@ const LanguageLoader = {
     async switchLanguage(lang) {
         this.currentLang = lang;
 
+        // Update <html lang="..."> for accessibility/screen readers
+        document.documentElement.lang = lang;
+
         // Update button text
         const currentLangEl = document.getElementById('current-lang');
         if (currentLangEl) {
@@ -97,6 +100,9 @@ const LanguageLoader = {
     restoreEmail() {
         const emailDisplay = document.getElementById('email-display');
         if (emailDisplay) {
+            // Única fuente de verdad para el email (antes main.js fijaba
+            // "vico@uma.es" y esta función "fjvico@uma.es" — condición de
+            // carrera. Confirma cuál es la dirección correcta.
             const user = 'fjvico';
             const domain = 'uma';
             const tld = 'es';

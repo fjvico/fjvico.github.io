@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes, viewport-fit=cover">
-  <meta name="theme-color" content="#0f4c5c">
+  <meta name="theme-color" content="#1b1712">
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
@@ -11,34 +11,33 @@
   <!-- Fonts & Icons -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300..700&family=Playfair+Display:ital,wght@0,500;1,500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,300..700;1,9..144,300..700&family=Source+Serif+4:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <!-- External CSS -->
   <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-  <header>
+  <header class="cover">
     <div class="container">
       <div class="header-content">
         <div class="header-text">
           <h1 id="header-title">Francisco J. Vico</h1>
           <p id="header-subtitle" class="subtitle">«intento cosas»</p>
         </div>
-        
-        <!-- LANGUAGE DROPDOWN INTEGRATED IN HEADER -->
+
+        <!-- SELECTOR DE IDIOMA -->
         <div class="language-dropdown">
           <button class="lang-btn-dropdown" id="langDropdownBtn">
-            <i class="fas fa-globe"></i>
             <span id="current-lang">ES</span>
             <i class="fas fa-chevron-down"></i>
           </button>
           <div class="dropdown-content" id="dropdownContent">
-            <a href="#" data-lang="es">ES - Español</a>
-            <a href="#" data-lang="en">EN - English</a>
-            <a href="#" data-lang="fr">FR - Français</a>
-            <a href="#" data-lang="de">DE - Deutsch</a>
-            <a href="#" data-lang="it">IT - Italiano</a>
-            <a href="#" data-lang="pt">PT - Português</a>
+            <a href="#" data-lang="es">ES · Español</a>
+            <a href="#" data-lang="en">EN · English</a>
+            <a href="#" data-lang="fr">FR · Français</a>
+            <a href="#" data-lang="de">DE · Deutsch</a>
+            <a href="#" data-lang="it">IT · Italiano</a>
+            <a href="#" data-lang="pt">PT · Português</a>
           </div>
         </div>
       </div>
@@ -48,18 +47,18 @@
   <nav>
     <div class="container">
       <ul>
-        <li><a href="#biografia" id="nav-bio"><i class="fas fa-user"></i> Biografía</a></li>
-        <li><a href="#academico" id="nav-academic"><i class="fas fa-graduation-cap"></i> Académico</a></li>
-        <li><a href="#escritor" id="nav-writer"><i class="fas fa-book"></i> Escritor</a></li>
-        <li><a href="#juegos" id="nav-games"><i class="fas fa-gamepad"></i> Creador de juegos</a></li>
+        <li><a href="#biografia" id="nav-bio">Biografía</a></li>
+        <li><a href="#academico" id="nav-academic">Académico</a></li>
+        <li><a href="#escritor" id="nav-writer">Escritor</a></li>
+        <li><a href="#juegos" id="nav-games">Creador de juegos</a></li>
       </ul>
     </div>
   </nav>
 
   <main class="container">
-    <!-- BIOGRAFÍA section -->
-    <section id="biografia" class="section-card">
-      <h2><i class="fas fa-user"></i> <span id="bio-title">Biografía</span></h2>
+    <!-- BIOGRAFÍA -->
+    <section id="biografia" class="chapter">
+      <h2><span id="bio-title">Biografía</span></h2>
       <div class="bio-content">
         <div class="bio-text">
           <div id="bio-content" class="bio-content-inner"></div>
@@ -75,9 +74,9 @@
       </div>
     </section>
 
-    <!-- ACADÉMICO section -->
-    <section id="academico" class="section-card">
-      <h2><i class="fas fa-graduation-cap"></i> <span id="academic-title">Académico</span></h2>
+    <!-- ACADÉMICO -->
+    <section id="academico" class="chapter">
+      <h2><span id="academic-title">Académico</span></h2>
       <div id="academic-content" class="academic-content-inner"></div>
 
       <div class="academic-links">
@@ -104,9 +103,9 @@
       </div>
     </section>
 
-    <!-- ESCRITOR section -->
-    <section id="escritor" class="section-card">
-      <h2><i class="fas fa-book"></i> <span id="writer-title">Escritor</span></h2>
+    <!-- ESCRITOR -->
+    <section id="escritor" class="chapter">
+      <h2><span id="writer-title">Escritor</span></h2>
       <div class="book-content">
         <div class="book-cover">
           <img src="images/cartas_de_alias_cover.jpg" alt="Cartas de Alias book cover" class="book-cover-image">
@@ -121,9 +120,9 @@
       </div>
     </section>
 
-    <!-- CREADOR DE JUEGOS section -->
-    <section id="juegos" class="section-card">
-      <h2><i class="fas fa-gamepad"></i> <span id="games-title">Creador de juegos</span></h2>
+    <!-- CREADOR DE JUEGOS -->
+    <section id="juegos" class="chapter">
+      <h2><span id="games-title">Creador de juegos</span></h2>
       <div class="game-content">
         <div class="game-info">
           <h3 id="game-name">Selfo</h3>
@@ -153,7 +152,7 @@
     </section>
   </main>
 
-  <!-- FOOTER -->
+  <!-- COLOFÓN -->
   <footer>
     <div class="container">
       <div class="footer-content">
@@ -164,20 +163,13 @@
         </div>
         <div class="footer-contact">
           <p class="email-container">
-            <i class="fas fa-envelope"></i> 
             <span id="email-display" class="email-display"></span>
           </p>
           <p>
-            <i class="fas fa-code-branch"></i>
-            <span>
-              <a href="https://fjvico.github.io/zeronoise/" target="_blank">zeronoise</a>
-            </span>
+            <a href="https://fjvico.github.io/zeronoise/" target="_blank">zeronoise</a>
           </p>
           <p>
-            <i class="fas fa-code-branch"></i>
-            <span>
-              <a href="https://fjvico.github.io/idiomator/" target="_blank">idiomator</a>
-            </span>
+            <a href="https://fjvico.github.io/idiomator/" target="_blank">idiomator</a>
           </p>
         </div>
       </div>

@@ -529,7 +529,7 @@ main {
   top: 0;
   left: 0;
   width: 300px;                 /* ancho real del iframe */
-  height: 470px;                /* 400 × 1.5 */
+  height: 475px;                /* 400 × 1.5 */
   border: none;
   transform: scale(0.75);       /* 300 / 400 = 0.75 */
   transform-origin: top left;

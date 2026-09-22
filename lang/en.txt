@@ -6,6 +6,7 @@ Francisco Vico
 Biography
 Academic
 Writer
+Game designer
 
 === BIOGRAPHY
 TITLE: Biography
@@ -30,6 +31,14 @@ BOOK_TITLE: Cartas de Alias
 DESCRIPTION: Alias, an AI with a conscience, writes letters to humanity.
 YEAR_LABEL: Publication year:
 BOOK_BTN: Visit book page
+
+=== GAMES
+TITLE: Game designer
+GAME_NAME: Selfo
+GAME_DESCRIPTION: Games are one of the purest ways to create complex systems: simple rules that produce emergent behaviors, branching decisions, and beauty that arises from that interaction. <i>Selfo</i> came from asking myself: what happens when the goal is not to destroy, but to connect? As with other things I try, here I am less interested in the game itself than in discovering what generates a complex and challenging dynamic.
+PLAYERS_LABEL: Players:
+PLAYERS: 2 (or against the machine)
+GAME_BTN: Play at selfo.games
 
 === FOOTER
 NAME: Francisco Vico

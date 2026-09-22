@@ -6,6 +6,7 @@ Francisco Vico
 Biographie
 Académique
 Écrivain
+Créateur de jeux
 
 === BIOGRAPHY
 TITLE: Biographie
@@ -30,6 +31,14 @@ BOOK_TITLE: Cartas de Alias
 DESCRIPTION: Alias, une IA dotée d'une conscience, écrit des lettres à l'humanité.
 YEAR_LABEL: Année de publication:
 BOOK_BTN: Visiter la page du livre
+
+=== GAMES
+TITLE: Créateur de jeux
+GAME_NAME: Selfo
+GAME_DESCRIPTION: Les jeux sont l'une des façons les plus pures de créer des systèmes complexes : des règles simples qui produisent des comportements émergents, des décisions qui se ramifient et une beauté qui naît de cette interaction. <i>Selfo</i> est né de la question : que se passe-t-il quand l'objectif n'est pas de détruire, mais de connecter ? Comme pour d'autres choses que j'essaie, ici je m'intéresse moins au jeu lui-même qu'à découvrir ce qui génère une dynamique complexe et stimulante.
+PLAYERS_LABEL: Joueurs :
+PLAYERS: 2 (ou contre la machine)
+GAME_BTN: Jouer sur selfo.games
 
 === FOOTER
 NAME: Francisco Vico

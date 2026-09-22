@@ -529,7 +529,7 @@ main {
   top: 0;
   left: 0;
   width: 300px;                 /* ancho real del iframe */
-  height: 475px;                /* 400 × 1.5 */
+  height: 470px;                /* 400 × 1.5 */
   border: none;
   transform: scale(0.75);       /* 300 / 400 = 0.75 */
   transform-origin: top left;
@@ -649,5 +649,29 @@ footer {
   .header-content {
     flex-direction: column;
     align-items: flex-start;
+  }
+
+  /* El desplegable crece hacia la derecha en vez de hacia la
+     izquierda, para no salirse de la pantalla */
+  .dropdown-content {
+    left: 0;
+    right: auto;
+  }
+
+  /* Menú deslizable en una sola línea en vez de partirse */
+  nav ul {
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    gap: 1.25rem;
+  }
+
+  nav ul::-webkit-scrollbar {
+    display: none;
+  }
+
+  nav ul li {
+    flex-shrink: 0;
   }
 }

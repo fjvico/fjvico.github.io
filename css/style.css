@@ -289,6 +289,33 @@ main {
   line-height: 1.75;
 }
 
+.bio-text {
+  display: flow-root;
+}
+
+.research-figures {
+  float: right;
+  width: 190px;
+  margin: 0.25rem 0 1rem 1.75rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.research-figure {
+  width: 100%;
+  border: 1px solid var(--ink);
+  box-shadow: 6px 6px 0 rgba(27, 23, 18, 0.1);
+}
+
+.research-figures .research-figure:first-child {
+  transform: rotate(1.2deg);
+}
+
+.research-figures .research-figure:last-child {
+  transform: rotate(-1deg);
+}
+
 .bio-content-inner p:first-of-type::first-letter {
   font-family: var(--font-display);
   font-weight: 600;
@@ -330,9 +357,12 @@ main {
    ACADÉMICO
    ============================================================ */
 .academic-content-inner p {
-  max-width: var(--measure);
   margin-bottom: 1.1rem;
   line-height: 1.75;
+}
+
+.academic-text {
+  display: flow-root;
 }
 
 .academic-links {
@@ -432,7 +462,6 @@ main {
 .book-description {
   font-style: italic;
   font-size: 1.05rem;
-  max-width: var(--measure);
   margin-bottom: 1.25rem;
   line-height: 1.7;
   color: var(--ink-muted);
@@ -579,6 +608,12 @@ footer {
   .bio-image {
     max-width: 220px;
     margin: 0 auto;
+  }
+
+  .research-figures {
+    width: 130px;
+    margin: 0.25rem 0 0.75rem 1rem;
+    gap: 0.6rem;
   }
 
   .book-content {
